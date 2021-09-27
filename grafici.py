@@ -19,9 +19,9 @@ def htcl_distribution(data):
 
     plt.yscale('symlog')
     plt.xscale('symlog')
-    plt.hist(data, bins = [0,1,10,100,1000,10000,100000,1000000,10000000,100000000], alpha = 0.3, color = 'green',  label='minhtcl')
+    plt.hist(data, bins = [0,1,10,100,1000,10000,100000,1000000,10000000,100000000], alpha = 0.5, color = 'green')
 
-    plt.legend(loc='upper right')
+    #plt.legend(loc='upper right')
     plt.tight_layout()
 
 def feebase_distribution(data):
@@ -34,9 +34,9 @@ def feebase_distribution(data):
 
     plt.yscale('symlog')
     plt.xscale('symlog')
-    plt.hist(data, bins = [0,1,10,100,1000,10000,100000,1000000,10000000,100000000], alpha = 0.3, color = 'purple',  label='fee_base')
+    plt.hist(data, bins = [0,1,10,100,1000,10000,100000,1000000,10000000,100000000], alpha = 0.5, color = 'purple')
 
-    plt.legend(loc='upper right')
+    #plt.legend(loc='upper right')
     plt.tight_layout()
 
 def feerate_distribution(data):
@@ -49,7 +49,7 @@ def feerate_distribution(data):
 
     plt.yscale('symlog')
     plt.xscale('symlog')
-    plt.hist(data, bins = [0,1,10,100,1000,10000,100000,1000000,10000000,100000000], alpha = 0.3, color = 'pink',  label='fee_rate')
+    plt.hist(data, bins = [0,1,10,100,1000,10000,100000,1000000,10000000,100000000], alpha = 0.5, color = 'orange')
 
-    plt.legend(loc='upper right')
+    #plt.legend(loc='upper right')
     plt.tight_layout()
