@@ -6,5 +6,5 @@
 - **grafici.py** : usato per la crezione degli istogrammi in 'def.ipynb'
 
 - **def.ipynb** : contiene calcolo delle distribuzioni, algoritmo per individuare i 'nodi radice'
-- **dividi.ipynb** : suddivide il dataset fornito in due file .json separati: nodes.json and edges.json
+- **dividi.ipynb** : suddivide il dataset fornito in due file .json separati: 'nodes.json' and 'edges.json'
 
