@@ -8,13 +8,13 @@ import json
 from datetime import datetime, date
 
 
-def htcl_distribution(data):
-    #istogrammi distribuzione htcl canali
+def htlc_distribution(data):
+    #istogrammi distribuzione htlc canali
 
     plt.figure(figsize=(13,6))
     plt.tick_params(axis='x', labelsize=18)
     plt.tick_params(axis='y', labelsize=18)
-    plt.xlabel('htcl(msat)', fontsize=20)
+    plt.xlabel('htlc(msat)', fontsize=20)
     plt.ylabel('channel count',fontsize=20)
 
     plt.yscale('symlog')
