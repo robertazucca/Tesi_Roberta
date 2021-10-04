@@ -22,6 +22,7 @@ class LightningNetwork:
         self.G = nx.MultiGraph(data = True)
 
         #ispeziono ogni canale, se i campi delle policy hanno valore null, setto il valore del campo a -1
+        #per i campi ROUTING setto a -1 anche nel caso in cui il campo sia false altrimenti 1
         for i in range(len(df_data)):
             
             self.G.add_edge(df_data.loc[i,'node1_pub'],df_data.loc[i,'node2_pub'], df_data.loc[i,'channel_id'], 
