@@ -32,8 +32,8 @@ class LightningNetwork:
             FEEBASE2 = -1 if (df_data.loc[i,'node2_policy.fee_base_msat']) == None else int(df_data.loc[i,'node2_policy.fee_base_msat']),
             FEERATE1 = -1 if (df_data.loc[i,'node1_policy.fee_rate_milli_msat']) == None else int(df_data.loc[i,'node1_policy.fee_rate_milli_msat']),
             FEERATE2 = -1 if (df_data.loc[i,'node2_policy.fee_rate_milli_msat']) == None else int(df_data.loc[i,'node2_policy.fee_rate_milli_msat']),
-            ROUTING1 = -1 if(df_data.loc[i,'node1_policy.disabled'] == None or df_data.loc[i,'node1_policy.disabled'] == false ) else 1,
-            ROUTING2 = -1 if(df_data.loc[i,'node2_policy.disabled'] == None or df_data.loc[i,'node2_policy.disabled'] == false ) else 1,
+            ROUTING1 = -1 if(df_data.loc[i,'node1_policy.disabled'] == None or df_data.loc[i,'node1_policy.disabled'] == 'false' ) else 1,
+            ROUTING2 = -1 if(df_data.loc[i,'node2_policy.disabled'] == None or df_data.loc[i,'node2_policy.disabled'] == 'false' ) else 1,
             CAPACITY = int(df_data.loc[i,'capacity'])
             )
 
