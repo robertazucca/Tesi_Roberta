@@ -24,7 +24,7 @@ class LightningNetwork:
         #ispeziono ogni canale, se i campi delle policy hanno valore null, setto il valore del campo a -1
         for i in range(len(df_data)):
             
-            self.G.add_edge(df_data.loc[i,'node1_pub'],df_data.loc[i,'node2_pub'],df_data.loc[i,'channel_id'], 
+            self.G.add_edge(df_data.loc[i,'node1_pub'],df_data.loc[i,'node2_pub'], df_data.loc[i,'channel_id'], 
             MINHTLC1 =  -1 if (df_data.loc[i,'node1_policy.min_htlc']) == None else int(df_data.loc[i,'node1_policy.min_htlc']),
             MINHTLC2 = -1 if (df_data.loc[i,'node2_policy.min_htlc']) == None else int(df_data.loc[i,'node2_policy.min_htlc']),
             FEEBASE1 = -1 if (df_data.loc[i,'node1_policy.fee_base_msat']) == None else int(df_data.loc[i,'node1_policy.fee_base_msat']),
