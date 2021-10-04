@@ -16,7 +16,7 @@ class LightningNetwork:
         for i in range(len(df_data)):
             if(df_data.loc[i,'node1_policy.min_htlc']) == None and df_data.loc[i,'node2_policy.min_htlc'] == None :
                 n = n+1
-        print("Percentuale canali in cui non conosco la policy: ", str(round(n*100/len(df_data),2)))
+        print("Percentuale canali in cui non conosco la policy: ", str(round(n*100/len(df_data),2)), "%")
 
         
         self.G = nx.MultiGraph(data = True)
