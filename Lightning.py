@@ -11,7 +11,8 @@ class LightningNetwork:
 
         df_data = pd.json_normalize(data)
 
-        #calcolare la percentuale dei canali in cui non conosco le policy di routing
+
+        #calcolare la percentuale dei canali di cui non conosco le policy di routing
         n=0
         m=0
         for i in range(len(df_data)):
@@ -20,7 +21,19 @@ class LightningNetwork:
             elif(df_data.loc[i,'node1_policy.min_htlc'] == None and df_data.loc[i,'node2_policy.min_htlc'] != None):
                 m += 1
         print("Percentuale canali di cui non conosco la policy di nessun nodo: ", str(round(n*100/len(df_data),2)), "%")
-        print("Percentuale canali di cui conosco la policy di un solo nodo: ", str(round(n*100/len(df_data),2)), "%")
+        print("Percentuale canali di cui conosco la policy di un solo nodo: ", str(round(m*100/len(df_data),2)), "%")
+
+        #calcolare percentuale dei canali su cui possono essere inoltrati pagamenti 
+        j=0
+        k=0
+        for i in range(len(df_data)):
+            if(df_data.loc[i,'node1_policy.disabled'] is True and df_data.loc[i,'node2_policy.disabled'] is True):
+                j += 1
+            elif(df_data.loc[i,'node1_policy.disabled'] == True or df_data.loc[i,'node2_policy.disabled'] == True):
+                k += 1  
+        print("Percentuale canali su cui entrambi i nodi non consentono il routing: ", str(round(j*100/len(df_data),2)), "%")
+        print("Percentuale canali su cui un solo nodo non consente il routing: ", str(round(k*100/len(df_data),2)), "%")
+
 
         
         self.G = nx.MultiGraph(data = True)
@@ -29,19 +42,18 @@ class LightningNetwork:
         #per i campi ROUTING setto a -1 anche nel caso in cui il campo disabled sia true altrimenti 1
         for i in range(len(df_data)):
             
-            self.G.add_edge(df_data.loc[i,'node1_pub'],df_data.loc[i,'node2_pub'], df_data.loc[i,'channel_id'], 
-            MINHTLC1 =  -1 if (df_data.loc[i,'node1_policy.min_htlc']) == None else int(df_data.loc[i,'node1_policy.min_htlc']),
-            MINHTLC2 = -1 if (df_data.loc[i,'node2_policy.min_htlc']) == None else int(df_data.loc[i,'node2_policy.min_htlc']),
-            FEEBASE1 = -1 if (df_data.loc[i,'node1_policy.fee_base_msat']) == None else int(df_data.loc[i,'node1_policy.fee_base_msat']),
-            FEEBASE2 = -1 if (df_data.loc[i,'node2_policy.fee_base_msat']) == None else int(df_data.loc[i,'node2_policy.fee_base_msat']),
-            FEERATE1 = -1 if (df_data.loc[i,'node1_policy.fee_rate_milli_msat']) == None else int(df_data.loc[i,'node1_policy.fee_rate_milli_msat']),
-            FEERATE2 = -1 if (df_data.loc[i,'node2_policy.fee_rate_milli_msat']) == None else int(df_data.loc[i,'node2_policy.fee_rate_milli_msat']),
-            ROUTING1 = -1 if(df_data.loc[i,'node1_policy.disabled'] == None or df_data.loc[i,'node1_policy.disabled'] == 'true' ) else 1,
-            ROUTING2 = -1 if(df_data.loc[i,'node2_policy.disabled'] == None or df_data.loc[i,'node2_policy.disabled'] == 'false' ) else 1,
+            self.G.add_edge(df_data.loc[i,'node1_pub'],df_data.loc[i,'node2_pub'], 
+            CHANNELID = df_data.loc[i,'channel_id'], 
+            MINHTLC1 =  -1 if df_data.loc[i,'node1_policy.min_htlc'] == None else int(df_data.loc[i,'node1_policy.min_htlc']),
+            MINHTLC2 = -1 if df_data.loc[i,'node2_policy.min_htlc'] == None else int(df_data.loc[i,'node2_policy.min_htlc']),
+            FEEBASE1 = -1 if df_data.loc[i,'node1_policy.fee_base_msat'] == None else int(df_data.loc[i,'node1_policy.fee_base_msat']),
+            FEEBASE2 = -1 if df_data.loc[i,'node2_policy.fee_base_msat'] == None else int(df_data.loc[i,'node2_policy.fee_base_msat']),
+            FEERATE1 = -1 if df_data.loc[i,'node1_policy.fee_rate_milli_msat'] == None else int(df_data.loc[i,'node1_policy.fee_rate_milli_msat']),
+            FEERATE2 = -1 if df_data.loc[i,'node2_policy.fee_rate_milli_msat'] == None else int(df_data.loc[i,'node2_policy.fee_rate_milli_msat']),
+            ROUTING1 = -1 if df_data.loc[i,'node1_policy.disabled'] == None else 0 if df_data.loc[i,'node1_policy.disabled'] == True else 1,
+            ROUTING2 = -1 if df_data.loc[i,'node2_policy.disabled'] == None else 0 if df_data.loc[i,'node2_policy.disabled'] == True else 1,
             CAPACITY = int(df_data.loc[i,'capacity'])
             )
-            self.G.add_edge(df_data.loc[i,'node2_pub'], v_for_edge)
-
 
 
         for edge in self.G.edges():
