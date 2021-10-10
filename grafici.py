@@ -17,7 +17,7 @@ def htlc_distribution(data):
     plt.xlabel('htlc(msat)', fontsize=20)
     plt.ylabel('channel count',fontsize=20)
 
-    plt.yscale('symlog')
+    #plt.yscale('symlog')
     plt.xscale('symlog')
     plt.hist(data, bins = [0,1,10,100,1000,10000,100000,1000000,10000000,100000000], alpha = 0.5, edgecolor ='black', color = 'green')
 
@@ -32,7 +32,7 @@ def feebase_distribution(data):
     plt.xlabel('fee_base (msat)', fontsize=20)
     plt.ylabel('channel count',fontsize=20)
 
-    plt.yscale('symlog')
+    #plt.yscale('symlog')
     plt.xscale('symlog')
     plt.hist(data, bins = [0,1,10,100,1000,10000,100000,1000000,10000000,100000000], alpha = 0.5, edgecolor ='black', color = 'purple')
 
@@ -47,7 +47,7 @@ def feerate_distribution(data):
     plt.xlabel('fee_rate (msat)', fontsize=20)
     plt.ylabel('channel count',fontsize=20)
 
-    plt.yscale('symlog')
+    #plt.yscale('symlog')
     plt.xscale('symlog')
     plt.hist(data, bins = [0,1,10,100,1000,10000,100000,1000000,10000000,100000000], alpha = 0.5, edgecolor ='black', color = 'orange')
 
@@ -75,5 +75,5 @@ def double_hist_fee(data1,data2):
     plt.ylabel('channel count',fontsize=10)
     #plt.yscale('log')
     plt.xscale('symlog')
-    a2.hist(data2, bins = [0,1,10,100,1000,10000,100000,1000000,10000000,100000000], alpha = 0.5, edgecolor ='black', color = 'green')
+    a2.hist(data2, bins = [0,1,10,100,1000,10000,100000,1000000,10000000,100000000], alpha = 0.5, edgecolor ='black', color = 'yellow')
     plt.tight_layout()
