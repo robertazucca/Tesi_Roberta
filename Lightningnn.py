@@ -63,7 +63,7 @@ class LightningNetworkNotNull:
 
         for i in range(len(df_data)):
 
-             if(df_data.loc[i,'node1_policy.min_htlc'] != None and df_data.loc[i,'node2_policy.min_htlc'] != None):
+             if(df_data.loc[i,'node1_policy.min_htlc'] != None or df_data.loc[i,'node2_policy.min_htlc'] != None):
 
                     edges.append((df_data.loc[i,'node1_pub'],df_data.loc[i,'node2_pub'],
                     {   
