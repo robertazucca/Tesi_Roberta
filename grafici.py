@@ -49,7 +49,7 @@ def feerate_distribution(data):
 
     #plt.yscale('symlog')
     plt.xscale('symlog')
-    plt.hist(data, bins = [0,1,10,100,1000,10000,100000,1000000,10000000,100000000], alpha = 0.5, edgecolor ='black', color = 'orange')
+    plt.hist(data, bins = [0,1,10,100,1000,10000,100000,1000000,10000000,100000000], alpha = 0.5, edgecolor ='black', color = 'yellow')
 
     #plt.legend(loc='upper right')
     plt.tight_layout()
@@ -64,7 +64,7 @@ def double_hist_fee(data1,data2):
     plt.ylabel('channel count',fontsize=10)
     #plt.yscale('log')
     plt.xscale('symlog')
-    a1.hist(data1, bins = [0,1,10,100,1000,10000,100000,1000000,10000000,100000000], alpha = 0.5, edgecolor ='black', color = 'green')
+    a1.hist(data1, bins = [0,1,10,100,1000,10000,100000,1000000,10000000,100000000], alpha = 0.5, edgecolor ='black', color = 'purple')
     plt.tight_layout()
 
 
@@ -75,5 +75,5 @@ def double_hist_fee(data1,data2):
     plt.ylabel('channel count',fontsize=10)
     #plt.yscale('log')
     plt.xscale('symlog')
-    a2.hist(data2, bins = [0,1,10,100,1000,10000,100000,1000000,10000000,100000000], alpha = 0.5, edgecolor ='black', color = 'yellow')
+    a2.hist(data2, bins = [0,1,10,100,1000,10000,100000,1000000,10000000,100000000], alpha = 0.5, edgecolor ='black', color = 'orange')
     plt.tight_layout()
