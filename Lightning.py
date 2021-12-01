@@ -68,6 +68,8 @@ class LightningNetwork:
                 'CHANNELID' : df_data.loc[i,'channel_id'],
                 'MINHTLC1' :  -1 if df_data.loc[i,'node1_policy.min_htlc'] == None else int(df_data.loc[i,'node1_policy.min_htlc']),
                 'MINHTLC2' : -1 if df_data.loc[i,'node2_policy.min_htlc'] == None else int(df_data.loc[i,'node2_policy.min_htlc']),
+                'MAXHTLC1' : -1 if df_data.loc[i,'node1_policy.max_htlc_msat'] == None else int (df_data.loc[i,'node1_policy.max_htlc_msat']),
+                'MAXHTLC2' : -1 if df_data.loc[i,'node2_policy.max_htlc_msat'] == None else int (df_data.loc[i,'node2_policy.max_htlc_msat']),
                 'FEEBASE1' : -1 if df_data.loc[i,'node1_policy.fee_base_msat'] == None else int(df_data.loc[i,'node1_policy.fee_base_msat']),
                 'FEEBASE2' : -1 if df_data.loc[i,'node2_policy.fee_base_msat'] == None else int(df_data.loc[i,'node2_policy.fee_base_msat']),
                 'FEERATE1' : -1 if df_data.loc[i,'node1_policy.fee_rate_milli_msat'] == None else int(df_data.loc[i,'node1_policy.fee_rate_milli_msat']),
